@@ -36,7 +36,7 @@
                 <p class="fade-in delay-1">High-performance automation for the modern era. Engineered for speed.
                     Optimized for dominance.</p>
                 <div class="hero-actions fade-in delay-2">
-                    <a href="#download-section" class="btn-download-hero">Download v7.3.2</a>
+                    <a href="#nexpy-content" class="btn-download-hero">Download v7.3.2</a>
                     <a href="docs.html" class="btn-secondary">Documentation</a>
                 </div>
             </div>
@@ -54,20 +54,43 @@
 
         <!-- NexPY Section -->
         <div id="nexpy-content" class="tab-content active">
-            <div class="sparkline-placeholder">
-                <div class="crate-container">
-                    <div class="product-crate">
-                        <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY Coming Soon"
-                            style="filter: grayscale(0.2) brightness(0.9) hue-rotate(280deg);">
+            <section id="download-section-nexpy" class="download-central fade-in delay-2 animate-on-scroll">
+                <div id="auth-gate-nexpy" class="auth-box central-auth">
+                    <div class="tier-header">
+                        <div class="crate-container">
+                            <div class="product-crate">
+                                <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY Download"
+                                    style="filter: grayscale(0.2) brightness(0.9) hue-rotate(280deg);">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auth-content">
+                        <h3>Access Restricted</h3>
+                        <p>Verify your <strong>Required Role</strong> via Discord to access the NexPY download.</p>
+                        <a href="#" onclick="loginWithDiscord()" class="btn-discord">Login with Discord</a>
                     </div>
                 </div>
-                <h2>NexPY Update In Progress</h2>
-                <p>The next generation of NexPY is currently being rebuilt! High-performance
-                    automation is being recalibrated. Documentation and downloads will return soon.</p>
-                <div style="margin-top: 2rem;">
-                    <a href="https://discord.gg/ngrl" target="_blank" class="btn-secondary">Join Discord for Alerts</a>
+
+                <div id="gated-content-nexpy" class="hero-actions gated-content-central" style="display: none;">
+                    <div class="tier-header">
+                        <div class="crate-container">
+                            <div class="product-crate">
+                                <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY Ready"
+                                    style="filter: grayscale(0.2) brightness(0.9) hue-rotate(280deg);">
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--primary); margin-bottom: 1rem; font-weight: bold; font-size: 1.2rem;">✅
+                        Verification Successful</p>
+                    <button onclick="startSecureDownload('nexpy')" class="btn-primary"
+                        style="cursor: pointer; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: var(--primary); color: #000;">Download
+                        NexPY v7.3.2</button>
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <a href="docs.html" style="color: #666; font-size: 0.8rem; text-decoration: none;">📖 View
+                            Documentation</a>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
         </section>
 
@@ -350,6 +373,7 @@
                 const hasRole = REQUIRED_ROLES.some(roleId => userRoles.includes(roleId));
 
                 if (hasRole) {
+                    unlockDownload('nexpy');
                     unlockDownload('sparkline');
                     sendUnauthorizedAlert(memberData, `✅ Access Granted (Role Verified)`);
                 } else {
@@ -364,8 +388,8 @@
         }
 
         function unlockDownload(version) {
-            const gate = document.getElementById('auth-gate-central');
-            const gated = document.getElementById('gated-content-central');
+            const gate = document.getElementById('auth-gate-' + (version === 'sparkline' ? 'central' : 'nexpy'));
+            const gated = document.getElementById('gated-content-' + (version === 'sparkline' ? 'central' : 'nexpy'));
 
             if (gate) gate.style.display = 'none';
             if (gated) {
@@ -379,6 +403,8 @@
             let url = "";
             if (version === 'sparkline') {
                 url = "https://github.com/nexgen-official/NexGen/releases/download/Sparkline/SparkLine.zip";
+            } else if (version === 'nexpy') {
+                url = "https://github.com/nexgen-official/NexGen/releases/download/NexPY/NexPY.7.3.2.zip";
             }
 
             if (url && url !== "#") window.location.href = url;
@@ -470,6 +496,5 @@
         });
     </script>
 </body>
-
 
 </html>

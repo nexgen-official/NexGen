@@ -15,6 +15,11 @@
     --cubic: cubic-bezier(0.16, 1, 0.3, 1);
     --glass: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
+
+    /* Sparkline Theme */
+    --sparkline-primary: #ff4d00;
+    --sparkline-secondary: #ff0000;
+    --sparkline-glow: rgba(255, 77, 0, 0.5);
 }
 
 * {
@@ -819,7 +824,35 @@ h1 {
 .btn-discord:hover {
     background: #4752c4;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(88, 101, 242, 0.5);
+}
+
+/* Sparkline Theme Overrides */
+#sparkline-content .btn-primary {
+    background: var(--sparkline-primary);
+    box-shadow: 0 0 15px var(--sparkline-glow);
+}
+
+#sparkline-content .btn-primary:hover {
+    background: #fff;
+    box-shadow: 0 0 30px var(--sparkline-glow);
+}
+
+#sparkline-content .product-crate {
+    box-shadow: 0 0 40px rgba(255, 77, 0, 0.2);
+}
+
+#sparkline-content .product-crate img {
+    filter: hue-rotate(340deg) saturate(1.5) brightness(1.1) drop-shadow(0 0 10px rgba(255, 77, 0, 0.4));
+}
+
+#sparkline-content h3,
+#sparkline-content p strong {
+    color: var(--sparkline-primary);
+}
+
+.tab-btn.sparkline-active.active {
+    background: var(--sparkline-primary);
+    box-shadow: 0 0 20px var(--sparkline-glow);
 }
 
 /* Modal Styling */

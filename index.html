@@ -44,17 +44,8 @@
     </header>
 
     <main class="container">
-        <!-- Tab Navigation -->
-        <div class="tab-container fade-in delay-2">
-            <div class="tab-bar">
-                <button class="tab-btn active" onclick="switchTab('nexpy')">NexPY</button>
-                <button class="tab-btn" onclick="switchTab('sparkline')">Sparkline</button>
-            </div>
-        </div>
-
-        <!-- NexPY Section -->
-        <div id="nexpy-content" class="tab-content active">
-            <section id="download-section" class="download-central fade-in delay-2 animate-on-scroll">
+        <!-- Central Download Section -->
+        <section id="download-section" class="download-central fade-in delay-2 animate-on-scroll">
             <div id="auth-gate-central" class="auth-box central-auth">
                 <div class="tier-header">
                     <div class="crate-container">
@@ -88,24 +79,7 @@
                         Documentation</a>
                 </div>
             </div>
-            </div>
         </section>
-
-        <!-- Sparkline Section -->
-        <div id="sparkline-content" class="tab-content">
-            <div class="sparkline-placeholder">
-                <div class="crate-container">
-                    <div class="product-crate">
-                        <img src="assets/1_output_1770879957_Qkscn.webp" alt="Sparkline Coming Soon" style="filter: grayscale(1) brightness(0.5);">
-                    </div>
-                </div>
-                <h2>Sparkline Development In Progress</h2>
-                <p>Advanced instrumentation and telemetry for elite performance. The download link and verification system are being prepared.</p>
-                <div style="margin-top: 2rem;">
-                    <a href="https://discord.gg/ngrl" target="_blank" class="btn-secondary">Get Notified on Discord</a>
-                </div>
-            </div>
-        </div>
     </main>
     <section id="features" class="container" style="padding: 10rem 0;">
         <div class="bento-grid">
@@ -213,21 +187,6 @@
     </div>
 
     <script>
-        function switchTab(tabName) {
-            // Update Buttons
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.innerText.toLowerCase() === tabName);
-            if (activeBtn) activeBtn.classList.add('active');
-
-            // Update Content
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            const activeContent = document.getElementById(tabName + '-content');
-            if (activeContent) activeContent.classList.add('active');
-
-            // Optional: Scroll to tabs if not in view
-            // document.querySelector('.tab-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
         function openAccessModal(mode = 'general') {
             const modal = document.getElementById('access-modal');
             const donationSection = document.getElementById('option-donation');

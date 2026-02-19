@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | NexPY</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="docs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+
+    <nav>
+        <div class="container">
+            <div class="logo">Nex<span>PY</span></div>
+            <div class="nav-links">
+                <a href="index.html#download-section" class="nav-download">Download</a>
+                <a href="docs.html">Information</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container docs-container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="#bots">Bot Capabilities</a></li>
+                <li><a href="#plugins">Plugin System</a></li>
+                <li><a href="#interruptions">Bot Interruptions</a></li>
+                <li><a href="#features">Program Features</a></li>
+                <li><a href="#security">Discord Verification</a></li>
+                <li><a href="#drm">DRM Policy</a></li>
+            </ul>
+        </aside>
+
+        <section class="docs-content">
+            <h1 id="top">System Documentation</h1>
+            <p class="intro">NexPY is a highly-sophisticated multi-bot orchestration system. It combines multiple
+                state-of-the-art AI agents with a powerful plugin architecture to
+                dominate the field.</p>
+
+            <h2 id="bots">Bot Capabilities</h2>
+            <div class="bot-grid">
+                <div class="bot-card">
+                    <h3>Nexto</h3>
+                    <p>Mainly used for ground control. Features powerful flicks, insane placement, and a built-in boost
+                        manager. This is the custom NexPY version of Nexto.</p>
+                </div>
+                <div class="bot-card">
+                    <h3>TNTsDemoBot</h3>
+                    <p>Specialized for demotions. While training is refined but controlled, the core demo functionality
+                        is fully present.</p>
+                </div>
+                <div class="bot-card">
+                    <h3>Ice Poseidon</h3>
+                    <p>Field movement and rotation specialist. Mastering custom kickoffs and a full dash suite: wave,
+                        wall, zap, and chain dashes.</p>
+                </div>
+                <div class="bot-card">
+                    <h3>Vortex</h3>
+                    <p>The flagship NexPY powerhouse. Exceptional at air dribble bumps, resets, ground-to-air/reset
+                        transitions, and versatile dashing capabilities.</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <h2 id="plugins">The Plugin System</h2>
+            <p>Our modular plugin architecture allows for nearly infinite extensibility. Plugins are written in Python
+                and loaded dynamically at runtime.</p>
+            <ul>
+                <li><strong>Pre-Decision Hooks:</strong> Intercept game data before the bot makes a choice, allowing for
+                    custom situational overrides.</li>
+                <li><strong>Post-Output Hooks:</strong> Modify the bot's controller outputs (steer, throttle, etc.) in
+                    real-time to add humanization or custom behaviors.</li>
+                <li><strong>Situational Triggers:</strong> Built-in support for kickoff-specific logic, aerial
+                    detection, and supersonic handling.</li>
+            </ul>
+
+            <h2 id="interruptions">How Bots are Interrupted</h2>
+            <p>The NexPY core coordinates "interrupts" to ensure the right tool is used for the right job:</p>
+            <ul>
+                <li><strong>Stability Reloads:</strong> To prevent freezes, bots are re-initialized during kickoff
+                    pauses, ensuring consistent performance throughout the match.</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="features">Program Features</h2>
+            <div class="feature-detail">
+                <h3>NexPY GUI</h3>
+                <p>A premium management interface built for ease of use and performance monitoring:</p>
+                <ul>
+                    <li><strong>Real-time Analytics:</strong> Track CPU, GPU, and VRAM usage with dynamic graphs.</li>
+                    <li><strong>Instance Management:</strong> Control multiple bot instances simultaneously with
+                        nickname support and PID tracking.</li>
+                    <li><strong>Name Spoofer:</strong> Built-in anonymity tool that hides your identity by spoofing
+                        display names in-game.</li>
+                    <li><strong>Auto-Update System:</strong> Mandatory version locking ensures you are always running
+                        the most secure and capable build.</li>
+                </ul>
+            </div>
+
+            <h2 id="security">Discord Verification & DRM</h2>
+            <div class="feature-detail">
+                <h3>Role Verification</h3>
+                <p>NexPY utilizes a secure Discord OAuth system to ensure only authorized users can access the software.
+                    This protection is embedded directly into the application.</p>
+                <ul>
+                    <li><strong>Family Feeder:</strong> Role ID: <code>1451836198816321646</code></li>
+                    <li><strong>Wife Feeder:</strong> Role ID: <code>1427796439240802437</code></li>
+                    <li><strong>Staff Tester:</strong> Role ID: <code>1419521981069398116</code></li>
+                    <li><strong>Booster Tester:</strong> Role ID: <code>1419522397605728367</code></li>
+                    <li><strong>Ticket Tester:</strong> Role ID: <code>1419521859782967306</code></li>
+                    <li><strong>Tag Tester:</strong> Role ID: <code>1419522121683435552</code></li>
+                </ul>
+                <p><strong>Process:</strong> Upon launching NexPY, you will be prompted to verify your Discord
+                    account. The system will automatically check for at least one of these required roles.</p>
+                <li><strong>Security:</strong> Our Secure DRM system generates a hardware-locked token once
+                    verified, ensuring your access remains stable and private.</li>
+                </ul>
+                <p><em>Users without a valid required role will be unable to launch the bot processes.</em></p>
+            </div>
+
+            <h2 id="drm">DRM & User Policy</h2>
+            <div class="feature-detail">
+                <h3>Secure DRM System</h3>
+                <p>We do not use DMA (Direct Memory Access). NexPY utilizes a custom Secure DRM system to manage
+                    software integrity and access.</p>
+                <ul>
+                    <li><strong>Hardware Locking:</strong> Our Secure DRM system generates a hardware-locked token once
+                        verified, ensuring your access remains stable and private.</li>
+                    <li><strong>Authorization:</strong> Only users with verified Discord roles can successfully
+                        authenticate and launch the bot processes.</li>
+                    <li><strong>Software Integrity:</strong> The DRM system ensures that the software has not been
+                        tampered with, providing a secure environment for all users.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        // Smooth scrolling for sidebar
+        document.querySelectorAll('.sidebar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || !href || !href.startsWith('#')) return;
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>

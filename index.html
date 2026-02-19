@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexPY | High-Performance Botting</title>
+    <meta name="description"
+        content="Experience the latest NexPY Winter Edition. High-performance, low-latency, and cutting-edge features.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-overlay">
+        <div class="background-overlay-extra"></div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <div class="logo">Nex<span>PY</span></div>
+            <div class="nav-links">
+                <a href="#download-section" class="nav-download">Download</a>
+                <a href="docs.html">Information</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Ultimate<br>Precision<span>.</span></h1>
+                <p class="fade-in delay-1">High-performance automation for the modern era. Engineered for speed.
+                    Optimized for dominance.</p>
+                <div class="hero-actions fade-in delay-2">
+                    <a href="#download-section" class="btn-download-hero">Download v7.3.2</a>
+                    <a href="docs.html" class="btn-secondary">Documentation</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Central Download Section -->
+        <section id="download-section" class="download-central fade-in delay-2 animate-on-scroll">
+            <div id="auth-gate-central" class="auth-box central-auth">
+                <div class="tier-header">
+                    <div class="crate-container">
+                        <div class="product-crate">
+                            <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY v7.3.2 Download">
+                        </div>
+                    </div>
+                </div>
+                <div class="auth-content">
+                    <h3>Access Restricted</h3>
+                    <p>Verify your <strong>Required Role</strong> via Discord to access the download.</p>
+                    <a href="#" onclick="loginWithDiscord()" class="btn-discord">Login with Discord</a>
+                </div>
+            </div>
+
+            <div id="gated-content-central" class="hero-actions gated-content-central" style="display: none;">
+                <div class="tier-header">
+                    <div class="crate-container">
+                        <div class="product-crate">
+                            <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY v7.3.2 Ready">
+                        </div>
+                    </div>
+                </div>
+                <p style="color: var(--primary); margin-bottom: 1rem; font-weight: bold; font-size: 1.2rem;">✅
+                    Verification Successful</p>
+                <button onclick="startSecureDownload('v7.3.2')" class="btn-primary"
+                    style="cursor: pointer; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: var(--primary); color: #000;">Download
+                    v7.3.2</button>
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <a href="docs.html" style="color: #666; font-size: 0.8rem; text-decoration: none;">📖 View
+                        Documentation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section id="features" class="container" style="padding: 10rem 0;">
+        <div class="bento-grid">
+            <div class="bento-item bento-main">
+                <div class="glow-overlay" id="glow-main"></div>
+                <div class="bento-icon">⚡</div>
+                <h3>Hyper-Engine Core</h3>
+                <p>Advanced real-time processing optimized for ultra-low latency execution and maximum script stability.
+                </p>
+            </div>
+            <div class="bento-item bento-tall">
+                <div class="glow-overlay"></div>
+                <div class="bento-icon">🛡️</div>
+                <h3>Guardian Protocol</h3>
+                <p>Proprietary obfuscation layers and dynamic signature rotation keeping you ahead of the curve.</p>
+            </div>
+            <div class="bento-item">
+                <div class="glow-overlay"></div>
+                <div class="bento-icon">🎯</div>
+                <h3>Precision Logic</h3>
+                <p>Pixel-perfect accuracy with customizable aim-assist modules.</p>
+            </div>
+            <div class="bento-item">
+                <div class="glow-overlay"></div>
+                <div class="bento-icon">📡</div>
+                <h3>Cloud Sync</h3>
+                <p>Instantly deploy your settings across all instances.</p>
+            </div>
+            <div class="bento-item bento-wide">
+                <div class="glow-overlay"></div>
+                <div class="bento-icon">🔧</div>
+                <h3>Bespoke Configuration</h3>
+                <p>Deep-level customization via our intuitive API and localized scripting engine.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Get Access Modal -->
+    <div id="access-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAccessModal()">&times;</span>
+            <h2 id="modal-title" style="color: var(--primary); margin-bottom: 0.5rem;">How to Get Access</h2>
+            <p id="modal-desc" style="margin-bottom: 2rem; color: #888; font-size: 0.95rem;">Join our community or
+                support development
+                for instant access.</p>
+
+            <h3
+                style="color: #fff; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem;">
+                Get Free Access Today!</h3>
+            <div class="role-list" style="margin-bottom: 2rem;">
+                <div class="role-item"><span class="role-tag" style="color: #ff00ff;">@Server Booster</span> - Boost the
+                    server to gain access to the tester versions!</div>
+                <div class="role-item"><span class="role-tag" style="color: #00ffff;">@Ticket Tester</span> - Find open
+                    slots through a support ticket, to gain access to the tester versions!</div>
+                <div class="role-item"><span class="role-tag" style="color: #00ff00;">@Tag Tester</span> - Wear the NXPY
+                    tag on your discord profile, to gain access to the tester versions!</div>
+                <div class="role-item"><span class="role-tag" style="color: #ffaa00;">@Staff Tester</span> - Active
+                    staff members get access to the tester versions!</div>
+            </div>
+
+            <div id="option-donation">
+                <h3
+                    style="color: #fff; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem;">
+                    Option 2: Instant Access (Donation)</h3>
+                <div class="role-list" style="margin-bottom: 1.5rem; border-left: 3px solid var(--secondary);">
+                    <div class="role-item" style="margin-bottom: 0.5rem;"><span class="role-tag"
+                            style="color: var(--primary);">$1 Donation</span> — Wife Feeder Tier Access</div>
+                    <div class="role-item"><span class="role-tag" style="color: var(--primary);">$2 Donation</span> —
+                        Family
+                        Feeder Tier Access</div>
+                </div>
+            </div>
+
+            <div id="option-tester" style="display: none; text-align: center; margin-bottom: 2rem;">
+                <h3
+                    style="color: #fff; margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem;">
+                    Join Our Discord</h3>
+                <p style="color: #ccc; margin-bottom: 1.5rem;">When you join our discord you get the latest alerts, the
+                    best free software, and the ability to create your own bot. Join Today!</p>
+                <a href="https://discord.gg/ngrl" target="_blank" class="btn-primary"
+                    style="background: #5865F2; color: white; border: none; text-decoration: none; display: inline-block;">
+                    Join Discord Community
+                </a>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <p style="color: #888; margin-bottom: 1rem; font-size: 0.8rem;">By proceeding, you agree to our <a
+                        href="terms.html" target="_blank" style="color: var(--primary);">Terms of Service</a>.</p>
+                <div
+                    style="margin-top: 1rem; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 8px; background: rgba(255,255,255,0.02);">
+                    <a href="https://www.paypal.com/paypalme/NMEpaypal" target="_blank" class="btn-primary"
+                        style="background: #0070ba; color: white; border: none; text-decoration: none; padding: 0.8rem 2rem;">
+                        Support via PayPal
+                    </a>
+                </div>
+            </div>
+
+            <p class="warning-text"
+                style="margin-top: 2rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; color: #ff4444; font-style: normal;">
+                <strong>⚠️ SECURITY POLICY:</strong> If you are roled as a Tag Tester and found without the tag, your
+                access will be revoked and your HWID/Discord ID will be blacklisted.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openAccessModal(mode = 'general') {
+            const modal = document.getElementById('access-modal');
+            const donationSection = document.getElementById('option-donation');
+            const testerSection = document.getElementById('option-tester');
+            const title = document.getElementById('modal-title');
+            const desc = document.getElementById('modal-desc');
+
+            if (mode === 'tester') {
+                donationSection.style.display = 'none';
+                testerSection.style.display = 'block';
+                title.innerText = 'Public Tester Edition Access';
+                desc.innerText = 'Support our development by helping us test new builds.';
+            } else {
+                donationSection.style.display = 'block';
+                testerSection.style.display = 'none';
+                title.innerText = 'How to Get Access';
+                desc.innerText = 'Join our community or support development for instant access.';
+            }
+
+            modal.style.display = 'block';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeAccessModal() {
+            document.getElementById('access-modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('access-modal');
+            if (event.target == modal) {
+                closeAccessModal();
+            }
+        }
+
+        // CONFIGURATION
+        const CLIENT_ID = '1405313613798965371';
+        const GUILD_ID = '1375152566660366390';
+        const FAMILY_FEEDER_ROLE_ID = '1451836198816321646';
+        const WIFE_FEEDER_ROLE_ID = '1427796439240802437';
+        const STAFF_TESTER_ROLE_ID = '1419521981069398116';
+        const BOOSTER_TESTER_ROLE_ID = '1419522397605728367';
+        const TICKET_TESTER_ROLE_ID = '1419521859782967306';
+        const TAG_TESTER_ROLE_ID = '1419522121683435552';
+
+        const REQUIRED_ROLES = [
+            FAMILY_FEEDER_ROLE_ID,
+            WIFE_FEEDER_ROLE_ID,
+            STAFF_TESTER_ROLE_ID,
+            BOOSTER_TESTER_ROLE_ID,
+            TICKET_TESTER_ROLE_ID,
+            TAG_TESTER_ROLE_ID
+        ];
+
+        const REDIRECT_URI = window.location.origin + window.location.pathname;
+        const WEBHOOK_URL = atob('aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ3Mjg3NzA3OTQ5MzA4NzI1NS9EbDlGNUU3MDFnTDM1VUFkaWJ2MGdPWjhGWTU0NVdDVXduRUhsTnZUWGRzT19sdk04VDF1N1ZLY0NwZ3ZRdjJsOVV1Vg=='); // Obfuscated Webhook
+
+        // Discord OAuth Login 
+        function loginWithDiscord() {
+            const url = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify%20guilds.members.read`;
+            window.location.href = url;
+        }
+
+        // Handle OAuth Callback
+        window.onload = () => {
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+            const accessToken = fragment.get('access_token');
+
+            if (accessToken) {
+                // Clear hash from URL for cleanliness
+                window.history.replaceState({}, document.title, window.location.pathname);
+                verifyUser(accessToken);
+            }
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                root: null,
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const badges = document.querySelectorAll('.animate-on-scroll');
+            badges.forEach(badge => observer.observe(badge));
+        };
+
+        async function verifyUser(token) {
+            try {
+                // 1. Get Base User Info (Identity)
+                const userRes = await fetch('https://discord.com/api/users/@me', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!userRes.ok) throw new Error("Could not fetch user identity.");
+                const userData = await userRes.json();
+
+                // 2. Get Member Info (Checks guild presence and roles)
+                const res = await fetch(`https://discord.com/api/users/@me/guilds/${GUILD_ID}/member`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!res.ok) {
+                    alert(`Verification Failed: You are not a member of the required Discord server.`);
+                    sendUnauthorizedAlert({ user: userData }, `❌ Access Denied: Not in Server`);
+                    return;
+                }
+
+                const memberData = await res.json();
+                const userRoles = memberData.roles || [];
+
+                // Check if user has ANY of the required roles
+                const hasRole = REQUIRED_ROLES.some(roleId => userRoles.includes(roleId));
+
+                if (hasRole) {
+                    unlockDownload('v7.3.2');
+                    sendUnauthorizedAlert(memberData, `✅ Access Granted (Role Verified)`);
+                } else {
+                    alert(`Verification Failed: You do not have the required roles to access NexPY.`);
+                    sendUnauthorizedAlert(memberData, `❌ Access Denied: Missing Required Roles`);
+                }
+
+            } catch (err) {
+                console.error("Auth Fail:", err);
+                alert("Authentication Error: " + err.message);
+            }
+        }
+
+        function unlockDownload(version) {
+            const gate = document.getElementById('auth-gate-central');
+            const gated = document.getElementById('gated-content-central');
+
+            if (gate) gate.style.display = 'none';
+            if (gated) {
+                gated.style.display = 'flex';
+                gated.style.flexDirection = 'column';
+                gated.style.alignItems = 'center';
+            }
+        }
+
+        function startSecureDownload(version) {
+            let url = "";
+            if (version === 'v7.3.2') {
+                url = "https://github.com/NMEytJason/Get-NexPY/releases/download/NexPY.exe/NexPY.7.3.2.zip";
+            }
+
+            if (url && url !== "#") window.location.href = url;
+        }
+
+        async function sendUnauthorizedAlert(member, action) {
+            if (!WEBHOOK_URL || WEBHOOK_URL.includes('YOUR_DISCORD')) return;
+
+            const user = member.user;
+            const roles = member.roles || [];
+
+            const roleMap = {
+                '1451836198816321646': 'Family Feeder',
+                '1427796439240802437': 'Wife Feeder',
+                '1419521981069398116': 'Staff Tester',
+                '1419522397605728367': 'Booster Tester',
+                '1419521859782967306': 'Ticket Tester',
+                '1419522121683435552': 'Tag Tester'
+            };
+
+            const rolePriority = [
+                '1451836198816321646',
+                '1427796439240802437',
+                '1419521981069398116',
+                '1419522397605728367',
+                '1419521859782967306',
+                '1419522121683435552'
+            ];
+
+            const highestRoleId = rolePriority.find(id => roles.includes(id));
+            const highestRole = highestRoleId ? roleMap[highestRoleId] : 'No Required Role';
+
+            // Get PST Time
+            const pstTime = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'America/Los_Angeles',
+                dateStyle: 'medium',
+                timeStyle: 'medium'
+            }).format(new Date());
+
+            const payload = {
+                content: `🌐 **Website Access Event**\nUser: <@${user.id}>\nStatus: ${action}`,
+                embeds: [{
+                    title: "Discord Verification System",
+                    color: action.includes("Granted") ? 65280 : 16711680,
+                    fields: [
+                        { name: "Name", value: user.global_name || user.username, inline: true },
+                        { name: "Username", value: user.username, inline: true },
+                        { name: "User ID", value: user.id, inline: true },
+                        { name: "Highest Role", value: highestRole, inline: true },
+                        { name: "Verification Time (PST)", value: pstTime, inline: false }
+                    ],
+                    footer: { text: "NexPY Verification Bot" },
+                    timestamp: new Date()
+                }]
+            };
+
+            try {
+                await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (e) {
+                console.error("Webhook failed");
+            }
+        }
+
+        // Bento Mouse Tracking
+        document.querySelectorAll('.bento-item').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || !href) return;
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>

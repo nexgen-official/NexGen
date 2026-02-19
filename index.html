@@ -44,42 +44,71 @@
     </header>
 
     <main class="container">
-        <!-- Central Download Section -->
-        <section id="download-section" class="download-central fade-in delay-2 animate-on-scroll">
-            <div id="auth-gate-central" class="auth-box central-auth">
-                <div class="tier-header">
-                    <div class="crate-container">
-                        <div class="product-crate">
-                            <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY v7.3.2 Download">
-                        </div>
-                    </div>
-                </div>
-                <div class="auth-content">
-                    <h3>Access Restricted</h3>
-                    <p>Verify your <strong>Required Role</strong> via Discord to access the download.</p>
-                    <a href="#" onclick="loginWithDiscord()" class="btn-discord">Login with Discord</a>
-                </div>
+        <!-- Tab Navigation -->
+        <div class="tab-container fade-in delay-2">
+            <div class="tab-bar">
+                <button class="tab-btn active" onclick="switchTab('nexpy')">NexPY</button>
+                <button class="tab-btn" onclick="switchTab('sparkline')">Sparkline</button>
             </div>
+        </div>
 
-            <div id="gated-content-central" class="hero-actions gated-content-central" style="display: none;">
-                <div class="tier-header">
-                    <div class="crate-container">
-                        <div class="product-crate">
-                            <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY v7.3.2 Ready">
-                        </div>
+        <!-- NexPY Section -->
+        <div id="nexpy-content" class="tab-content active">
+            <div class="sparkline-placeholder">
+                <div class="crate-container">
+                    <div class="product-crate">
+                        <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY Coming Soon"
+                            style="filter: grayscale(0.2) brightness(0.9) hue-rotate(280deg);">
                     </div>
                 </div>
-                <p style="color: var(--primary); margin-bottom: 1rem; font-weight: bold; font-size: 1.2rem;">✅
-                    Verification Successful</p>
-                <button onclick="startSecureDownload('v7.3.2')" class="btn-primary"
-                    style="cursor: pointer; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: var(--primary); color: #000;">Download
-                    v7.3.2</button>
-                <div style="margin-top: 1.5rem; text-align: center;">
-                    <a href="docs.html" style="color: #666; font-size: 0.8rem; text-decoration: none;">📖 View
-                        Documentation</a>
+                <h2>NexPY Update In Progress</h2>
+                <p>The next generation of NexPY is currently being rebuilt for the Winter Edition. High-performance
+                    automation is being recalibrated. Documentation and downloads will return soon.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="https://discord.gg/ngrl" target="_blank" class="btn-secondary">Join Discord for Alerts</a>
                 </div>
             </div>
+        </div>
         </section>
+
+        <!-- Sparkline Section -->
+        <div id="sparkline-content" class="tab-content">
+            <section id="download-section" class="download-central fade-in delay-2 animate-on-scroll">
+                <div id="auth-gate-central" class="auth-box central-auth">
+                    <div class="tier-header">
+                        <div class="crate-container">
+                            <div class="product-crate">
+                                <img src="assets/1_output_1770879957_Qkscn.webp" alt="Sparkline Download">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auth-content">
+                        <h3>Access Restricted</h3>
+                        <p>Verify your <strong>Required Role</strong> via Discord to access the Sparkline download.</p>
+                        <a href="#" onclick="loginWithDiscord()" class="btn-discord">Login with Discord</a>
+                    </div>
+                </div>
+
+                <div id="gated-content-central" class="hero-actions gated-content-central" style="display: none;">
+                    <div class="tier-header">
+                        <div class="crate-container">
+                            <div class="product-crate">
+                                <img src="assets/1_output_1770879957_Qkscn.webp" alt="Sparkline Ready">
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--primary); margin-bottom: 1rem; font-weight: bold; font-size: 1.2rem;">✅
+                        Verification Successful</p>
+                    <button onclick="startSecureDownload('sparkline')" class="btn-primary"
+                        style="cursor: pointer; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: var(--primary); color: #000;">Download
+                        SparkLine</button>
+                    <div style="margin-top: 1.5rem; text-align: center;">
+                        <a href="docs.html" style="color: #666; font-size: 0.8rem; text-decoration: none;">📖 View
+                            Documentation</a>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
     <section id="features" class="container" style="padding: 10rem 0;">
         <div class="bento-grid">
@@ -187,6 +216,21 @@
     </div>
 
     <script>
+        function switchTab(tabName) {
+            // Update Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.innerText.toLowerCase() === tabName);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // Update Content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            const activeContent = document.getElementById(tabName + '-content');
+            if (activeContent) activeContent.classList.add('active');
+
+            // Optional: Scroll to tabs if not in view
+            // document.querySelector('.tab-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         function openAccessModal(mode = 'general') {
             const modal = document.getElementById('access-modal');
             const donationSection = document.getElementById('option-donation');
@@ -306,10 +350,10 @@
                 const hasRole = REQUIRED_ROLES.some(roleId => userRoles.includes(roleId));
 
                 if (hasRole) {
-                    unlockDownload('v7.3.2');
+                    unlockDownload('sparkline');
                     sendUnauthorizedAlert(memberData, `✅ Access Granted (Role Verified)`);
                 } else {
-                    alert(`Verification Failed: You do not have the required roles to access NexPY.`);
+                    alert(`Verification Failed: You do not have the required roles to access this download.`);
                     sendUnauthorizedAlert(memberData, `❌ Access Denied: Missing Required Roles`);
                 }
 
@@ -333,8 +377,8 @@
 
         function startSecureDownload(version) {
             let url = "";
-            if (version === 'v7.3.2') {
-                url = "https://github.com/NMEytJason/Get-NexPY/releases/download/NexPY.exe/NexPY.7.3.2.zip";
+            if (version === 'sparkline') {
+                url = "https://github.com/nexgen-official/NexGen/releases/download/Sparkline/SparkLine.zip";
             }
 
             if (url && url !== "#") window.location.href = url;

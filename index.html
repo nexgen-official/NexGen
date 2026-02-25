@@ -309,7 +309,7 @@
         ];
 
         const REDIRECT_URI = window.location.origin + window.location.pathname;
-        const WEBHOOK_URL = atob('aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ3Mjg3NzA3OTQ5MzA4NzI1NS9EbDlGNUU3MDFnTDM1VUFkaWJ2MGdPWjhGWTU0NVdDVXduRUhsTnZUWGRzT19sdk04VDF1N1ZLY0NwZ3ZRdjJsOVV1Vg=='); // Obfuscated Webhook
+        // Webhook removed for security — alerts are handled by NexPY/SparkLine apps via Game Gate.
 
         // Discord OAuth Login 
         function loginWithDiscord() {
@@ -362,7 +362,7 @@
 
                 if (!res.ok) {
                     alert(`Verification Failed: You are not a member of the required Discord server.`);
-                    sendUnauthorizedAlert({ user: userData }, `❌ Access Denied: Not in Server`);
+
                     return;
                 }
 
@@ -375,10 +375,10 @@
                 if (hasRole) {
                     unlockDownload('nexpy');
                     unlockDownload('sparkline');
-                    sendUnauthorizedAlert(memberData, `✅ Access Granted (Role Verified)`);
+
                 } else {
                     alert(`Verification Failed: You do not have the required roles to access this download.`);
-                    sendUnauthorizedAlert(memberData, `❌ Access Denied: Missing Required Roles`);
+
                 }
 
             } catch (err) {
@@ -410,67 +410,7 @@
             if (url && url !== "#") window.location.href = url;
         }
 
-        async function sendUnauthorizedAlert(member, action) {
-            if (!WEBHOOK_URL || WEBHOOK_URL.includes('YOUR_DISCORD')) return;
 
-            const user = member.user;
-            const roles = member.roles || [];
-
-            const roleMap = {
-                '1451836198816321646': 'Family Feeder',
-                '1427796439240802437': 'Wife Feeder',
-                '1419521981069398116': 'Staff Tester',
-                '1419522397605728367': 'Booster Tester',
-                '1419521859782967306': 'Ticket Tester',
-                '1419522121683435552': 'Tag Tester'
-            };
-
-            const rolePriority = [
-                '1451836198816321646',
-                '1427796439240802437',
-                '1419521981069398116',
-                '1419522397605728367',
-                '1419521859782967306',
-                '1419522121683435552'
-            ];
-
-            const highestRoleId = rolePriority.find(id => roles.includes(id));
-            const highestRole = highestRoleId ? roleMap[highestRoleId] : 'No Required Role';
-
-            // Get PST Time
-            const pstTime = new Intl.DateTimeFormat('en-US', {
-                timeZone: 'America/Los_Angeles',
-                dateStyle: 'medium',
-                timeStyle: 'medium'
-            }).format(new Date());
-
-            const payload = {
-                content: `🌐 **Website Access Event**\nUser: <@${user.id}>\nStatus: ${action}`,
-                embeds: [{
-                    title: "Discord Verification System",
-                    color: action.includes("Granted") ? 65280 : 16711680,
-                    fields: [
-                        { name: "Name", value: user.global_name || user.username, inline: true },
-                        { name: "Username", value: user.username, inline: true },
-                        { name: "User ID", value: user.id, inline: true },
-                        { name: "Highest Role", value: highestRole, inline: true },
-                        { name: "Verification Time (PST)", value: pstTime, inline: false }
-                    ],
-                    footer: { text: "NexPY Verification Bot" },
-                    timestamp: new Date()
-                }]
-            };
-
-            try {
-                await fetch(WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-            } catch (e) {
-                console.error("Webhook failed");
-            }
-        }
 
         // Bento Mouse Tracking
         document.querySelectorAll('.bento-item').forEach(card => {

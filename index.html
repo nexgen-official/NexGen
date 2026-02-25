@@ -55,7 +55,8 @@
         <!-- NexPY Section -->
         <div id="nexpy-content" class="tab-content active">
             <section id="download-section-nexpy" class="download-central fade-in delay-2 animate-on-scroll">
-                <div id="auth-gate-nexpy" class="auth-box central-auth">
+                <div class="hero-actions gated-content-central"
+                    style="display: flex; flex-direction: column; align-items: center;">
                     <div class="tier-header">
                         <div class="crate-container">
                             <div class="product-crate">
@@ -64,24 +65,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="auth-content">
-                        <h3>Access Restricted</h3>
-                        <p>Verify your <strong>Required Role</strong> via Discord to access the NexPY download.</p>
-                        <a href="#" onclick="loginWithDiscord()" class="btn-discord">Login with Discord</a>
-                    </div>
-                </div>
-
-                <div id="gated-content-nexpy" class="hero-actions gated-content-central" style="display: none;">
-                    <div class="tier-header">
-                        <div class="crate-container">
-                            <div class="product-crate">
-                                <img src="assets/1_output_1770879957_Qkscn.webp" alt="NexPY Ready"
-                                    style="filter: grayscale(0.2) brightness(0.9) hue-rotate(280deg);">
-                            </div>
-                        </div>
-                    </div>
-                    <p style="color: var(--primary); margin-bottom: 1rem; font-weight: bold; font-size: 1.2rem;">✅
-                        Verification Successful</p>
                     <button onclick="startSecureDownload('nexpy')" class="btn-primary"
                         style="cursor: pointer; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: var(--primary); color: #000;">Download
                         NexPY v7.3.2</button>
@@ -92,12 +75,12 @@
                 </div>
             </section>
         </div>
-        </section>
 
         <!-- Sparkline Section -->
         <div id="sparkline-content" class="tab-content">
             <section id="download-section" class="download-central fade-in delay-2 animate-on-scroll">
-                <div id="auth-gate-central" class="auth-box central-auth">
+                <div class="hero-actions gated-content-central"
+                    style="display: flex; flex-direction: column; align-items: center;">
                     <div class="tier-header">
                         <div class="crate-container">
                             <div class="product-crate">
@@ -105,23 +88,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="auth-content">
-                        <h3>Access Restricted</h3>
-                        <p>Verify your <strong>Required Role</strong> via Discord to access the Sparkline download.</p>
-                        <a href="#" onclick="loginWithDiscord()" class="btn-discord">Login with Discord</a>
-                    </div>
-                </div>
-
-                <div id="gated-content-central" class="hero-actions gated-content-central" style="display: none;">
-                    <div class="tier-header">
-                        <div class="crate-container">
-                            <div class="product-crate">
-                                <img src="assets/1_output_1771511148_brQCr.webp" alt="Sparkline Ready">
-                            </div>
-                        </div>
-                    </div>
-                    <p style="color: var(--primary); margin-bottom: 1rem; font-weight: bold; font-size: 1.2rem;">✅
-                        Verification Successful</p>
                     <button onclick="startSecureDownload('sparkline')" class="btn-primary"
                         style="cursor: pointer; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: var(--primary); color: #000;">Download
                         SparkLine</button>
@@ -289,116 +255,7 @@
             }
         }
 
-        // CONFIGURATION
-        const CLIENT_ID = '1405313613798965371';
-        const GUILD_ID = '1375152566660366390';
-        const FAMILY_FEEDER_ROLE_ID = '1451836198816321646';
-        const WIFE_FEEDER_ROLE_ID = '1427796439240802437';
-        const STAFF_TESTER_ROLE_ID = '1419521981069398116';
-        const BOOSTER_TESTER_ROLE_ID = '1419522397605728367';
-        const TICKET_TESTER_ROLE_ID = '1419521859782967306';
-        const TAG_TESTER_ROLE_ID = '1419522121683435552';
-
-        const REQUIRED_ROLES = [
-            FAMILY_FEEDER_ROLE_ID,
-            WIFE_FEEDER_ROLE_ID,
-            STAFF_TESTER_ROLE_ID,
-            BOOSTER_TESTER_ROLE_ID,
-            TICKET_TESTER_ROLE_ID,
-            TAG_TESTER_ROLE_ID
-        ];
-
-        const REDIRECT_URI = window.location.origin + window.location.pathname;
-        // Webhook removed for security — alerts are handled by NexPY/SparkLine apps via Game Gate.
-
-        // Discord OAuth Login 
-        function loginWithDiscord() {
-            const url = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify%20guilds.members.read`;
-            window.location.href = url;
-        }
-
-        // Handle OAuth Callback
-        window.onload = () => {
-            const fragment = new URLSearchParams(window.location.hash.slice(1));
-            const accessToken = fragment.get('access_token');
-
-            if (accessToken) {
-                // Clear hash from URL for cleanliness
-                window.history.replaceState({}, document.title, window.location.pathname);
-                verifyUser(accessToken);
-            }
-
-            // Intersection Observer for animations
-            const observerOptions = {
-                root: null,
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            const badges = document.querySelectorAll('.animate-on-scroll');
-            badges.forEach(badge => observer.observe(badge));
-        };
-
-        async function verifyUser(token) {
-            try {
-                // 1. Get Base User Info (Identity)
-                const userRes = await fetch('https://discord.com/api/users/@me', {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-                if (!userRes.ok) throw new Error("Could not fetch user identity.");
-                const userData = await userRes.json();
-
-                // 2. Get Member Info (Checks guild presence and roles)
-                const res = await fetch(`https://discord.com/api/users/@me/guilds/${GUILD_ID}/member`, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-
-                if (!res.ok) {
-                    alert(`Verification Failed: You are not a member of the required Discord server.`);
-
-                    return;
-                }
-
-                const memberData = await res.json();
-                const userRoles = memberData.roles || [];
-
-                // Check if user has ANY of the required roles
-                const hasRole = REQUIRED_ROLES.some(roleId => userRoles.includes(roleId));
-
-                if (hasRole) {
-                    unlockDownload('nexpy');
-                    unlockDownload('sparkline');
-
-                } else {
-                    alert(`Verification Failed: You do not have the required roles to access this download.`);
-
-                }
-
-            } catch (err) {
-                console.error("Auth Fail:", err);
-                alert("Authentication Error: " + err.message);
-            }
-        }
-
-        function unlockDownload(version) {
-            const gate = document.getElementById('auth-gate-' + (version === 'sparkline' ? 'central' : 'nexpy'));
-            const gated = document.getElementById('gated-content-' + (version === 'sparkline' ? 'central' : 'nexpy'));
-
-            if (gate) gate.style.display = 'none';
-            if (gated) {
-                gated.style.display = 'flex';
-                gated.style.flexDirection = 'column';
-                gated.style.alignItems = 'center';
-            }
-        }
-
+        // Download handler
         function startSecureDownload(version) {
             let url = "";
             if (version === 'sparkline') {
@@ -406,10 +263,20 @@
             } else if (version === 'nexpy') {
                 url = "https://github.com/nexgen-official/NexGen/releases/download/NexPY-7.3.2/NexPY7.3.2.zip";
             }
-
             if (url && url !== "#") window.location.href = url;
         }
 
+        // Intersection Observer for animations
+        window.onload = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { root: null, threshold: 0.1 });
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        };
 
 
         // Bento Mouse Tracking

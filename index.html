@@ -36,7 +36,7 @@
                 <p class="fade-in delay-1">High-performance automation for the modern era. Engineered for speed.
                     Optimized for dominance.</p>
                 <div class="hero-actions fade-in delay-2">
-                    <a href="#nexpy-content" class="btn-download-hero">Download v7.3.2</a>
+                    <a href="#nexpy-content" class="btn-download-hero">Download v7.4.5</a>
                     <a href="docs.html" class="btn-secondary">Documentation</a>
                 </div>
             </div>
@@ -65,13 +65,9 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        style="text-align: center; padding: 1.5rem; background: rgba(255, 165, 0, 0.08); border: 1px solid rgba(255, 165, 0, 0.25); border-radius: 12px; max-width: 400px; width: 100%;">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔧</div>
-                        <h3 style="color: #ffa500; margin: 0 0 0.5rem 0; font-size: 1.1rem;">Under Maintenance</h3>
-                        <p style="color: #999; font-size: 0.9rem; margin: 0;">NexPY is currently being updated. It will
-                            be available again soon.</p>
-                    </div>
+                    <button onclick="startSecureDownload('nexpy')" class="btn-primary"
+                        style="cursor: pointer; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: var(--primary); color: #000;">Download
+                        NexPY v7.4.5</button>
                     <div style="margin-top: 1.5rem; text-align: center;">
                         <a href="docs.html" style="color: #666; font-size: 0.8rem; text-decoration: none;">📖 View
                             Documentation</a>
@@ -265,7 +261,7 @@
             if (version === 'sparkline') {
                 url = "https://github.com/nexgen-official/NexGen/releases/download/Sparkline/Sparkline.1.0.2.zip";
             } else if (version === 'nexpy') {
-                url = "https://github.com/nexgen-official/NexGen/releases/download/NexPY-7.3.2/NexPY7.3.2.zip";
+                url = "https://github.com/nexgen-official/NexGen/releases/download/NexPY-7.3.2/NexPY-7.4.5.zip";
             }
             if (url && url !== "#") window.location.href = url;
         }

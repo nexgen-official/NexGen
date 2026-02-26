@@ -65,10 +65,13 @@
                             </div>
                         </div>
                     </div>
-                    <button onclick="startSecureDownload('nexpy')" class="btn-primary"
-                        style="cursor: pointer; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: var(--primary); color: #000;">Download
-                        NexPY v7.4.5</button>
+                    <button class="btn-primary"
+                        style="cursor: not-allowed; border: none; width: 100%; max-width: 400px; padding: 1.2rem; background: #333; color: #888; opacity: 0.6;">NexPY
+                        Under Maintenance</button>
                     <div style="margin-top: 1.5rem; text-align: center;">
+                        <span
+                            style="color: var(--primary); font-size: 0.9rem; font-weight: bold; display: block; margin-bottom: 0.5rem;">🏗️
+                            Currently Being Rebuilt</span>
                         <a href="docs.html" style="color: #666; font-size: 0.8rem; text-decoration: none;">📖 View
                             Documentation</a>
                     </div>
@@ -259,7 +262,7 @@
         function startSecureDownload(version) {
             let url = "";
             if (version === 'sparkline') {
-                url = "https://github.com/nexgen-official/NexGen/releases/download/Sparkline/Sparkline.1.0.2.zip";
+                url = "https://github.com/nexgen-official/NexGen/releases/download/Sparkline/sparkline.1.0.3.zip";
             } else if (version === 'nexpy') {
                 url = "https://github.com/nexgen-official/NexGen/releases/download/NexPY-7.3.2/NexPY-7.4.5.zip";
             }
